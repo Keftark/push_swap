@@ -29,30 +29,24 @@ void	swap_list(t_array *arr, int n)
 		ft_putstr_fd("\nss", 1);
 }
 
-void	push_list(t_array *arr1, t_array *arr2, int n)
+void	push_list(t_array *arr1, t_array *arr2, int n) // push first arr2 element on top of arr1
 {
 	int	i;
 
 	ft_putstr_fd("\npushing...\n", 1);
-	i = 0;
+	i = -1;
 	if (!arr2[0].used)
 		return ;
-	while (arr1[i].used)
-	{
+	while (arr1[++i].used)
 		arr1[i + 1].val = arr1[i].val;
-		i++;
-	}
 	ft_putstr_fd("\n0\n", 1);
-	arr1[i].used = 1;
+	arr1[++i].used = 1;
 	arr1[0].val = arr2[0].val;
-	i = 1;
-	while (arr1[i].used)
-	{
-		arr1[i - 1].val = arr1[i].val;
-		i++;
-	}
-	arr1[i - 1].val = 0;
-	arr1[i - 1].used = 0;
+	i = 0;
+	while (arr2[++i].used)
+		arr2[i - 1].val = arr2[i].val;
+	arr2[++i].used = 0;
+	arr2[i].val = 0; // not very useful if we check only the used variable.
 	if (n == 0)
 		ft_putstr_fd("\npa", 1);
 	else if (n == 1)
