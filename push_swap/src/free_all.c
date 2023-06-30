@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 09:21:13 by cpothin           #+#    #+#             */
-/*   Updated: 2023/06/28 12:14:42 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/06/29 09:13:12 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@ void	free_all(t_data *data)
 {
 	free(data->arr_a);
 	free(data->arr_b);
+	exit(0);
 }

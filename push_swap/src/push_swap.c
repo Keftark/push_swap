@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:00:38 by cpothin           #+#    #+#             */
-/*   Updated: 2023/06/28 17:37:27 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/06/30 14:19:02 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,52 +49,94 @@
 		write(2, "Error\n", 6);
 }*/
 
+void	free_split(char **split)
+{
+	int	i;
+	
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
+
+int	is_valid_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-')
+		i++;
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	add_list(t_array *arr, int nbr, int index)
 {
 	arr[index].val = nbr;
 	arr[index].used = 1;
-	// t_lst	*n;
-
-	// while (lst->next != NULL)
-	// 	lst = lst->next;
-	// n = (t_lst *)malloc(sizeof(t_lst));
-	// if (!n)
-	// 	return ;
-	// n->data = nbr;
-	// n->next = NULL;
-	// lst->next = n;
 }
+int	valid_arg(t_data *data, char *str)
+{
+	char	**split;
+	int	i;
+
+	split = ft_split(str, data);
+	init_data(data, data->nbrs);
+	i = 0;
+	while (i < data->nbrs)
+	{
+		if (is_valid_number(split[i]))
+			add_list(data->arr_a, ft_atoi(split[i]), i);
+		else
+		{
+			free_split(split);
+			free_all(data);
+			return (0);
+		}
+		i++;
+	}
+	free_split(split);
+	return (1);
+}
+
 
 int	main(int argc, char *argv[])
 {
-/*
-	- verifier les arguments du style "2 5", c'est un argument mais il faut faire un split pour le transformer apparemment
-	- ft_strtol ne fonctionne pas correctement. Verifier pourquoi...
-	- crash sur le lsts[1] ? segfault... voir avec valgrind
-*/
 	t_data	data;
-	// t_lst	*lsts[2];
 	int		i;
 
 	i = 1;
 	if (argc == 1)
 		return (0);
 	else if (argc == 2) // verifier ici si on peut faire un split en nombres
-		return (write(2, "Error!\n\tYou have to put at least 2 numbers\n", 43));
-	init_data(&data, argc - 1);
-	while (i < argc)
 	{
-		if (check_errors(argv[i], &data) != 0)
-			return (0);
-		add_list(data.arr_a, ft_atoi(argv[i]), i - 1);
-		i++;
+		if (valid_arg(&data, argv[1]) == 0)
+			return (write(2, "Error!\n\tYou have to put at least 2 numbers\n", 43));
 	}
-	display_lists(&data);
-	//start_sorting(&data);
-	//swap_list(&lsts[0]);
-	push_list(data.arr_b, data.arr_a, 0);
-	//rotate_list(&lsts[0]);
-	//rev_rotate_list(&lsts[0]);
-	display_lists(&data);
+	else
+	{
+		init_data(&data, argc - 1);
+		while (i < argc)
+		{
+			if (check_errors(argv[i], &data) != 0)
+				free_all(&data);
+			add_list(data.arr_a, ft_atoi(argv[i]), i - 1);
+			i++;
+		}
+	}
+	get_min_max(&data);
+	//display_lists(&data);
+	start_sorting(&data);
+	//swap_list(data.arr_a, 0);
+	//push_list(data.arr_b, data.arr_a, 0, data.total);
+	//rotate_list(data.arr_a, 0, data.total);
+	//rev_rotate_list(data.arr_a, 0, data.total);
+	//display_lists(&data);
+	//printf("\nCalculations: %d\n", data.calculations);
 	free_all(&data);
 }

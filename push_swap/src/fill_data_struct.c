@@ -6,11 +6,26 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 09:37:55 by cpothin           #+#    #+#             */
-/*   Updated: 2023/06/28 12:15:29 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/06/30 14:00:40 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+int		get_digits(int nbr)
+{
+	int	i;
+
+	i = 0;
+	if (nbr < 0)
+		nbr = -nbr;
+	while (nbr != 0)
+	{
+		nbr /= 10;
+		i++;
+	}
+	return (i);
+}
 
 void	get_min_max(t_data *data)
 {
@@ -31,6 +46,11 @@ void	get_min_max(t_data *data)
 	}
 	data->min_value = min;
 	data->max_value = max;
+	if (get_digits(data->min_value) > get_digits(data->max_value))
+		data->max_digits = get_digits(data->min_value);
+	else
+		data->max_digits = get_digits(data->max_value);
+	//printf("\nmax digits: %d\n", data->max_digits);
 }
 
 void	init_data(t_data *data, int nb)
@@ -39,7 +59,6 @@ void	init_data(t_data *data, int nb)
 
 	data->total = nb;
 	data->calculations = 0;
-	get_min_max(data);
 	data->arr_a = (t_array *)malloc(sizeof(t_array) * nb);
 	if (!data->arr_a)
 		return (exit(0));
@@ -51,6 +70,8 @@ void	init_data(t_data *data, int nb)
 	{
 		data->arr_b[i].used = 0;
 		data->arr_b[i].val = 0;
+		// data->arr_b[i].box = -10;
+		// data->arr_b[i].empty_box = 1;
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 16:25:44 by cpothin           #+#    #+#             */
-/*   Updated: 2023/06/28 13:58:44 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/06/29 09:14:24 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	check_if_exists(char *str, t_data *data)
 	i = 0;
 	while (i < data->total)
 	{
-		if (data->arr_a->val == nb)
+		if (data->arr_a[i].val == nb)
 			return (1);
 		i++;
 	}

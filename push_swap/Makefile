@@ -6,7 +6,7 @@
 #    By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 15:58:06 by cpothin           #+#    #+#              #
-#    Updated: 2023/06/28 12:14:10 by cpothin          ###   ########.fr        #
+#    Updated: 2023/06/30 09:46:48 by cpothin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,9 @@ FILES = push_swap \
 	free_all \
 	fill_data_struct \
 	sort_list \
+	sort_big \
+	move_numbers \
+	ft_split \
 	
 SRCS_DIR = src/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
