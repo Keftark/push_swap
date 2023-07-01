@@ -3,7 +3,7 @@ An algorithm project from 42.
 
 It uses the radix sorting algorithm, which is not the best but efficient enough on large amount of numbers.
 
-Installation: 
+<h1>Installation:</h1> 
 
 Download the push_swap folder and open a command pompt inside.
 Type "make" to compile the project.
