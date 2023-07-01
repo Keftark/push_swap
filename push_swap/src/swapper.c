@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:52 by cpothin           #+#    #+#             */
-/*   Updated: 2023/06/30 15:46:11 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/07/01 15:00:17 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	push_list(t_array *arr1, t_array *arr2, int n, t_data *data)
 	else
 		while (--i > 0)
 			if (arr1[i - 1].used)
-				move_number(arr1, arr1, i - 1, i);
-	move_number(arr2, arr1, 0, 0);
+				copy_number(arr1, arr1, i - 1, i);
+	copy_number(arr2, arr1, 0, 0);
 	i = 0;
 	while (++i < data->total && arr2[i].used)
-		move_number(arr2, arr2, i, i - 1);
+		copy_number(arr2, arr2, i, i - 1);
 	empty_number(arr2, i - 1);
 	if (n == 0)
 		ft_putstr_fd("pa\n", 1);
@@ -59,15 +59,18 @@ void	push_list(t_array *arr1, t_array *arr2, int n, t_data *data)
 void	rotate_list(t_array *arr, int n, t_data *data)
 {
 	int	swap_val;
+	int	swap_index;
 	int	i;
 
 	if (!arr[0].used)
 		return ;
 	swap_val = arr[0].val;
+	swap_index = arr[0].index;
 	i = 0;
 	while (++i < data->total && arr[i].used)
-		arr[i - 1].val = arr[i].val;
+		copy_number(arr, arr, i, i - 1);
 	arr[i - 1].val = swap_val;
+	arr[i - 1].index = swap_index;
 	if (n == 0)
 		ft_putstr_fd("ra\n", 1);
 	else if (n == 1)
@@ -90,7 +93,7 @@ void	rev_rotate_list(t_array *arr, int n, t_data *data)
 	while (i > 0)
 	{
 		if (i > 0 && arr[i].used)
-			move_number(arr, arr, i - 1, i);
+			copy_number(arr, arr, i - 1, i);
 		i--;
 	}
 	arr[0].val = swap_val;

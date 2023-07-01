@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 10:47:43 by cpothin           #+#    #+#             */
-/*   Updated: 2023/06/29 17:28:24 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/07/01 10:35:42 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,4 @@ void	display_lists(t_data *data)
 		ft_putstr_fd("|\n", 1);
 	}
 	ft_putstr_fd("---------------------------------\n", 1);
-	// if (data->is_sorted == 1)
-	// 	ft_putstr_fd("\nThe list is sorted!\n\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 16:36:57 by cpothin           #+#    #+#             */
-/*   Updated: 2023/06/26 09:49:00 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/07/01 10:34:18 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,6 @@ static char	charmap(char c)
 		return (c - '0');
 	return (127);
 }
-
-/*static int	getbase(const char **nptr, int base)
-{
-	const char	*ptr;
-
-	ptr = *nptr;
-	if ((base == 0 || base == 16) && *ptr == '0')
-	{
-		if (*(++ptr) == 'x' && (++(ptr)))
-			base = 16;
-		else if (*ptr == '0')
-			base = 8;
-		else
-			base = 10;
-		*nptr = ptr;
-	}
-	return (base);
-}*/
 
 long	ft_strtol(const char *nptr, char **endptr)
 {

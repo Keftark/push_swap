@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 16:25:44 by cpothin           #+#    #+#             */
-/*   Updated: 2023/06/29 09:14:24 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/07/01 15:40:47 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_numbers(char *str)
 
 	errno = 0;
 	nb = ft_strtol(str, &ptr);
-	if (errno != 0 || ptr == str) // || *ptr != '\0' <- suppression de cette condition... est-elle utile??
+	if (errno != 0 || ptr == str)
 		return (0);
 	if (nb < INT_MIN || nb > INT_MAX)
 		return (0);
@@ -59,23 +59,8 @@ static int	check_if_exists(char *str, t_data *data)
 
 int	check_errors(char *str, t_data *data)
 {
-	if (check_numbers(str) == 0)
-	{
-		write(2, "Error\n\t", 7);
-		ft_putstr_fd(str, 2);
-		return (write(2, " is is not an int!", 18));
-	}
-	if (arg_error(str) == 1)
-	{
-		write(2, "Error\n\t", 7);
-		ft_putstr_fd(str, 2);
-		return (write(2, " <- You must enter only numbers!", 32));
-	}
-	if (check_if_exists(str, data) == 1)
-	{
-		write(2, "Error\n\t", 7);
-		ft_putstr_fd(str, 2);
-		return (write(2, " <- This number already exists!", 31));
-	}
+	if (check_numbers(str) == 0 || arg_error(str) == 1
+		|| check_if_exists(str, data) == 1 || data->total == 1)
+		return (write(2, "Error\n", 6));
 	return (0);
 }
