@@ -14,3 +14,7 @@ Start the program by typing `./push_swap <random amount of numbers>`.
 Example: 
 
 `./push_swap 5 -100 67 -34 9 55 -1`
+
+or
+
+`./push_swap "5 -100 67 -34 9 55 -1"`
