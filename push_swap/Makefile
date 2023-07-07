@@ -17,7 +17,7 @@ AR = ar rcs
 RM = rm -rf
 CC =	gcc
 INCLUDE = -I include
-CFLAGS	= -Wall -Wextra -Werror -lasan -fsanitize=address -g3 #2>/dev/null
+CFLAGS	= -Wall -Wextra -Werror -g3
 
 FILES = push_swap \
 	swapper \
