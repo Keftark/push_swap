@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:00:38 by cpothin           #+#    #+#             */
-/*   Updated: 2023/07/01 16:08:11 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/07/10 09:25:07 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char *argv[])
 		init_data(&data, argc - 1);
 		while (i < argc)
 		{
-			if (check_errors(argv[i], &data) != 0)
+			if (check_errors(argv[i], &data, i - 1) != 0)
 				return (free_arrays(&data));
 			add_list(data.arr_a, ft_atoi(argv[i]), i - 1);
 			i++;

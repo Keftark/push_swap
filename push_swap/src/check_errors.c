@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 16:25:44 by cpothin           #+#    #+#             */
-/*   Updated: 2023/07/01 15:40:47 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/07/10 09:25:19 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static int	arg_error(char *str)
 	return (0);
 }
 
-static int	check_if_exists(char *str, t_data *data)
+static int	check_if_exists(char *str, t_data *data, int index)
 {
 	int		nb;
 	int		i;
 
 	nb = ft_atoi(str);
 	i = 0;
-	while (i < data->total)
+	while (i < index)
 	{
 		if (data->arr_a[i].val == nb)
 			return (1);
@@ -57,10 +57,10 @@ static int	check_if_exists(char *str, t_data *data)
 	return (0);
 }
 
-int	check_errors(char *str, t_data *data)
+int	check_errors(char *str, t_data *data, int index)
 {
 	if (check_numbers(str) == 0 || arg_error(str) == 1
-		|| check_if_exists(str, data) == 1 || data->total == 1)
+		|| check_if_exists(str, data, index) == 1 || data->total == 1)
 		return (write(2, "Error\n", 6));
 	return (0);
 }

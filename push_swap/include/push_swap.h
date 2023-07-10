@@ -6,7 +6,7 @@
 /*   By: cpothin <cpothin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:02:02 by cpothin           #+#    #+#             */
-/*   Updated: 2023/07/01 15:25:31 by cpothin          ###   ########.fr       */
+/*   Updated: 2023/07/10 09:12:33 by cpothin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		free_arrays(t_data *data);
 int		free_all(t_data *data, char **split);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_atoi(const char *str);
-int		check_errors(char *str, t_data *data);
+int		check_errors(char *str, t_data *data, int index);
 int		check_sorted(t_data *data);
 int		get_last_value(t_array *arr, int max);
 int		get_digits(int nbr);
